@@ -1,6 +1,6 @@
 package com.example.footballmanager.repository.player;
 
-import com.example.footballmanager.entity.player.PlayerEntity;
+import com.example.footballmanager.entity.PlayerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

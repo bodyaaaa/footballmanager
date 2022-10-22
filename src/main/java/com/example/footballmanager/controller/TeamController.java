@@ -1,7 +1,9 @@
-package com.example.footballmanager.controller.team;
+package com.example.footballmanager.controller;
 
-import com.example.footballmanager.entity.team.TeamEntity;
-import com.example.footballmanager.service.team.TeamService;
+import com.example.footballmanager.dto.team.TeamCreateDto;
+import com.example.footballmanager.dto.team.TeamDto;
+import com.example.footballmanager.dto.team.TeamUpdateDto;
+import com.example.footballmanager.service.team.TeamServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,30 +12,30 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("team")
+@RequestMapping("team/")
 public class TeamController {
-    private final TeamService teamService;
+    private final TeamServiceImpl teamService;
 
     @GetMapping
-    public List<TeamEntity> findAll() {
+    public List<TeamDto> findAll() {
         return teamService.findAll();
     }
 
     @GetMapping("{id}")
-    public TeamEntity findById(@PathVariable Long id) {
+    public TeamDto findById(@PathVariable Long id) {
         return teamService.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TeamEntity create(@RequestBody TeamEntity team){
+    public TeamDto create(@RequestBody TeamCreateDto team){
         return teamService.create(team);
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable Long id, @RequestBody TeamEntity team){
-        teamService.update(id, team);
+    public TeamDto update(@PathVariable Long id, @RequestBody TeamUpdateDto team){
+        return teamService.update(id, team);
     }
 
     @DeleteMapping("{id}")

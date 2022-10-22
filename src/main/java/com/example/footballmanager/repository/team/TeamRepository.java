@@ -1,6 +1,6 @@
 package com.example.footballmanager.repository.team;
 
-import com.example.footballmanager.entity.team.TeamEntity;
+import com.example.footballmanager.entity.TeamEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +12,7 @@ public interface TeamRepository extends JpaRepository<TeamEntity, Long> {
 
     @Modifying
     @Query("""
-            UPDATE TeamEntity SET 
+            UPDATE TeamEntity SET
                 name = :#{#entity.name},
                 city = :#{#entity.city},
                 country = :#{#entity.country},
